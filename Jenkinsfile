@@ -14,7 +14,7 @@ pipeline {
     }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'docker run --rm -v "$HOME/.m2:/root/.m2" -v "$PWD:/app" -w /app maven:3.9.2 mvn test'
             }
             post {
                 always {
